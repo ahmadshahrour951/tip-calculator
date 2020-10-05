@@ -26,6 +26,46 @@
       const peopleInput = document.querySelector('#input-people');
       const displayTip = document.querySelector('#display-tip');
       const displayTotal = document.querySelector('#display-total');
+
+      let billFinal = parseInt(billInput.value) || 0;
+      let tipFinal = parseInt(tipInput.value) || 0;
+      let peopleFinal = parseInt(peopleInput.value) || 1;
+      let tipFinalInt = (billFinal * tipFinal) / 100 || 0;
+      let totalFinal = billFinal + tipFinalInt || 0;
+
+      function handleBill(e) {
+        if (e.target && e.target.value) {
+          const bill = parseInt(e.target.value);
+          billFinal = bill;
+          updateFinalValues();
+          console.log(tipFinalInt, totalFinal);
+        }
+      }
+
+      function handleTip(e) {
+        if (e.target && e.target.value) {
+          const tip = parseInt(e.target.value);
+          tipFinal = tip;
+          updateFinalValues();
+        }
+      }
+
+      function handlePeople(e) {
+        if (e.target && e.target.value) {
+          const people = parseInt(e.target.value);
+          peopleFinal = people;
+          updateFinalValues();
+        }
+      }
+
+      function updateFinalValues() {
+        tipFinalInt = (billFinal * tipFinal) / 100 / peopleFinal;
+        totalFinal = billFinal / peopleFinal + tipFinalInt;
+      }
+
+      billInput.addEventListener('change', handleBill);
+      tipInput.addEventListener('change', handleTip);
+      peopleInput.addEventListener('change', handlePeople);
     </script>
   </body>
 </html>
