@@ -27,15 +27,15 @@
       const displayTip = document.querySelector('#display-tip');
       const displayTotal = document.querySelector('#display-total');
 
-      let billFinal = parseInt(billInput.value) || 0;
-      let tipFinal = parseInt(tipInput.value) || 0;
+      let billFinal = parseFloat(billInput.value) || 0;
+      let tipFinal = parseFloat(tipInput.value) || 0;
       let peopleFinal = parseInt(peopleInput.value) || 1;
       let tipFinalInt = (billFinal * tipFinal) / 100 || 0;
       let totalFinal = billFinal + tipFinalInt || 0;
 
       function handleBill(e) {
         if (e.target && e.target.value) {
-          const bill = parseInt(e.target.value);
+          const bill = parseFloat(e.target.value);
           billFinal = bill;
           updateFinalValues();
           console.log(tipFinalInt, totalFinal);
@@ -44,7 +44,7 @@
 
       function handleTip(e) {
         if (e.target && e.target.value) {
-          const tip = parseInt(e.target.value);
+          const tip = parseFloat(e.target.value);
           tipFinal = tip;
           updateFinalValues();
         }
