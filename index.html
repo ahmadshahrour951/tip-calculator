@@ -16,8 +16,8 @@
         <input type="number" id="input-people" name="input-people" min="1" />
       </div>
       <div>
-        <h2 id="display-tip">Tip</h2>
-        <h1 id="display-total">Total</h1>
+        <h2>Tip: $<span id="display-tip"></span></h2>
+        <h1>Total: $<span id="display-total"></span></h1>
       </div>
     </div>
     <script>
@@ -30,15 +30,12 @@
       let billFinal = parseFloat(billInput.value) || 0;
       let tipFinal = parseFloat(tipInput.value) || 0;
       let peopleFinal = parseInt(peopleInput.value) || 1;
-      let tipFinalInt = (billFinal * tipFinal) / 100 || 0;
-      let totalFinal = billFinal + tipFinalInt || 0;
 
       function handleBill(e) {
         if (e.target && e.target.value) {
           const bill = parseFloat(e.target.value);
           billFinal = bill;
-          updateFinalValues();
-          console.log(tipFinalInt, totalFinal);
+          showValues();
         }
       }
 
@@ -46,7 +43,7 @@
         if (e.target && e.target.value) {
           const tip = parseFloat(e.target.value);
           tipFinal = tip;
-          updateFinalValues();
+          showValues();
         }
       }
 
@@ -54,18 +51,23 @@
         if (e.target && e.target.value) {
           const people = parseInt(e.target.value);
           peopleFinal = people;
-          updateFinalValues();
+          showValues();
         }
       }
 
-      function updateFinalValues() {
+      function showValues() {
         tipFinalInt = (billFinal * tipFinal) / 100 / peopleFinal;
         totalFinal = billFinal / peopleFinal + tipFinalInt;
+
+        displayTip.innerHTML = tipFinalInt;
+        displayTotal.innerHTML = totalFinal;
       }
 
       billInput.addEventListener('change', handleBill);
       tipInput.addEventListener('change', handleTip);
       peopleInput.addEventListener('change', handlePeople);
+
+      showValues();
     </script>
   </body>
 </html>
