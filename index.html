@@ -8,13 +8,16 @@
   <body>
     <div>
       <div>
-        <input />
-        <input />
-        <input />
+        <label for="bill">Bill</label>
+        <input type="number" id="input-bill" name="input-bill" min="0" />
+        <label for="tip">Tip %</label>
+        <input type="number" id="input-tip" name="input-tip" min="0" />
+        <label for="input-people">Number of people</label>
+        <input type="number" id="input-people" name="input-people" min="1" />
       </div>
       <div>
-        <h2>Tip</h2>
-        <h1>Total</h1>
+        <h2 id="display-tip">Tip</h2>
+        <h1 id="display-total">Total</h1>
       </div>
     </div>
   </body>
